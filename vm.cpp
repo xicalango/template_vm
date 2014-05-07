@@ -186,6 +186,7 @@ struct RunVM
 
 int main(void) {
 
+  //COMPUTE 33
   typedef 
     L< OP< OP_PUSH_V, I<5> >, 
     L< OP< OP_INC >,
@@ -197,14 +198,15 @@ int main(void) {
     LE
     > > > > > > > PROG1;
 
+  //COMPUTE (2^EXP) * BASE
   typedef
-    L< OP< OP_PUSH_V, I<10> >, //EXP
-    L< OP< OP_PUSH_V, I<2> >, //BASE
+    L< OP< OP_PUSH_V, I<30> >, //EXP
+    L< OP< OP_PUSH_V, I<1> >, //BASE
 
     //LOOP:
     L< OP< OP_SWP >, 
     L< OP< OP_DUP >, 
-    L< OP< OP_PUSH_V, I<1> >, //EXP == 1?
+    L< OP< OP_PUSH_V, I<0> >, //IF EXP == 0?
     L< OP< OP_JEQ, I<12> >, //GOTO END
     
     L< OP< OP_PUSH_V, I<-1> >,
@@ -229,3 +231,4 @@ int main(void) {
   return 0;
 
 }
+
